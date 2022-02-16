@@ -1,0 +1,42 @@
+---
+# tasks file for mediawiki
+
+- name: Install dependencies
+  include_tasks: requirements.yml
+  with_items: "{{ requirements }}"
+
+- name: reload apache
+  service:
+    name: apache2
+    state: reloaded
+
+- name: Download
+  get_url:
+    url: http://releases.wikimedia.org/mediawiki/1.37/{{ mediawiki_ver }}.tar.gz
+    dest: /tmp/mediawiki.tgz
+
+- name: Unzip
+  unarchive:
+    src: /tmp/mediawiki.tgz
+    dest: /tmp
+    remote_src: yes
+
+- name: Create folder
+  file:
+    path: "{{ mediawiki_dir }}"
+    state: directory
+
+- name: Copy folder
+  copy:
+    src: /tmp/{{ mediawiki_ver }}/
+    dest: "{{ mediawiki_dir }}"
+    remote_src: yes
+
+- name: config sql
+  include_tasks: mysql.yml
+
+- name: config mediawiki
+  file:
+    src: "{{ mediawiki_dir }}"
+    dest: /var/www/html/mediawiki
+    state: link

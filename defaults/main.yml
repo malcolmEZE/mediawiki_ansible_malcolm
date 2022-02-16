@@ -1,0 +1,15 @@
+---
+# defaults file for mediawiki
+requirements:
+  - php
+  - php-apcu 
+  - php-intl 
+  - php-mbstring 
+  - php-xml
+  - php-mysql 
+  - mariadb-server 
+  - apache2
+
+mediawiki_ver: mediawiki-1.37.1
+
+mediawiki_dir: /var/lib/mediawiki

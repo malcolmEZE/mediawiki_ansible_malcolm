@@ -1,0 +1,5 @@
+---
+- name: "install mediawiki"
+  hosts: all
+  roles:
+    - mediawiki
