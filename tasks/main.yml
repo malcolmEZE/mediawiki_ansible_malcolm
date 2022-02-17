@@ -32,6 +32,11 @@
     dest: "{{ mediawiki_dir }}"
     remote_src: yes
 
+- name: Delete old folder
+  file: 
+    path: /tmp/{{ mediawiki_ver }}/
+    state: absent
+
 - name: config sql
   include_tasks: mysql.yml
 
