@@ -13,3 +13,9 @@ requirements:
 mediawiki_ver: mediawiki-1.37.1
 
 mediawiki_dir: /var/lib/mediawiki
+
+mysql_user: sql
+
+mysql_password: sql
+
+mysql_database: my_wiki

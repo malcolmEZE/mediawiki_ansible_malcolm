@@ -32,16 +32,16 @@
     dest: "{{ mediawiki_dir }}"
     remote_src: yes
 
-- name: Delete old folder
-  file: 
-    path: /tmp/{{ mediawiki_ver }}/
-    state: absent
-
 - name: config sql
   include_tasks: mysql.yml
 
-- name: config mediawiki
+- name: symlink mediawiki
   file:
     src: "{{ mediawiki_dir }}"
     dest: /var/www/html/mediawiki
     state: link
+
+- name: LocalSettings
+  template:
+    src: templates/LocalSettings.j2
+    dest: "{{ mediawiki_dir }}/LocalSettings.php"
