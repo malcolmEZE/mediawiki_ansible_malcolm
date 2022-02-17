@@ -41,7 +41,7 @@
     dest: /var/www/html/mediawiki
     state: link
 
-- name: LocalSettings
-  template:
-    src: templates/LocalSettings.j2
-    dest: "{{ mediawiki_dir }}/LocalSettings.php"
+#- name: LocalSettings
+  #template:
+    #src: templates/LocalSettings.j2
+    #dest: "{{ mediawiki_dir }}/LocalSettings.php"
