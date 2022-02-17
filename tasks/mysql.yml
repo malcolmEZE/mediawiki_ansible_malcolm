@@ -6,12 +6,12 @@
 
 - name: Creation user sql
   mysql_user:
-    name: sql
-    password: sql
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
     priv: '*.*:ALL'
     state: present
 
 - name: Creation database
   mysql_db:
-    name: my_wiki
+    name: "{{ mysql_database }}"
     state: present
